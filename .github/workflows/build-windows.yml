@@ -2,41 +2,103 @@ name: Build QuiLe-Autovocal Windows Installer
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches:
+      - main
+      - master
   pull_request:
-    branches: [ "main", "master" ]
+    branches:
+      - main
+      - master
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-installer-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: '3.11'
+  APP_NAME: QuiLe-Autovocal
+
 jobs:
-  build:
+  test-and-build:
+    name: Test and build Windows installer
     runs-on: windows-latest
-    permissions:
-      contents: read
+    timeout-minutes: 30
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Checkout source code
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.11'
-      - name: Install dependencies
-        shell: pwsh
-        run: python -m pip install -r requirements.txt
-      - name: Run regression tests
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install Python dependencies
         shell: pwsh
         run: |
-          $env:PYTHONPATH = "$PWD"
-          python -m unittest discover -s tests -p "test_*.py" -v
-      - name: Build application bundle
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Run regression tests
         shell: pwsh
-        run: pyinstaller --noconfirm --clean --onedir --windowed --name QuiLe-Autovocal app.py
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Check Python syntax
+        shell: pwsh
+        run: |
+          python -m py_compile app.py audio_engine.py key_detector.py tests/test_audio.py
+
+      - name: Build application with PyInstaller
+        shell: pwsh
+        run: |
+          Remove-Item -Recurse -Force -ErrorAction SilentlyContinue build, dist
+          pyinstaller --noconfirm --clean --onedir --windowed --name "$env:APP_NAME" app.py
+          if (-not (Test-Path "dist\$env:APP_NAME\$env:APP_NAME.exe")) {
+            throw "Không tìm thấy file ứng dụng sau khi PyInstaller build."
+          }
+
       - name: Install Inno Setup
         shell: pwsh
         run: choco install innosetup -y --no-progress
-      - name: Build one-click installer
+
+      - name: Build one-click EXE installer
         shell: pwsh
-        run: '& "$env:ProgramFiles(x86)\Inno Setup 6\ISCC.exe" QuiLe-Autovocal.iss'
-      - name: Upload installer
-        uses: actions/upload-artifact@v4
+        run: |
+          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc)) {
+            throw "Không tìm thấy Inno Setup tại $iscc"
+          }
+          & $iscc "QuiLe-Autovocal.iss"
+          if (-not (Test-Path "output\QuiLe-Autovocal-Setup.exe")) {
+            throw "Inno Setup không tạo được file installer."
+          }
+
+      - name: Upload installer artifact
+        if: ${{ success() }}
+        uses: actions/upload-artifact@v5
         with:
-          name: QuiLe-Autovocal-Windows-Installer
+          name: QuiLe-Autovocal-Windows-Installer-${{ github.sha }}
           path: output/QuiLe-Autovocal-Setup.exe
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload build logs on failure
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v5
+        with:
+          name: QuiLe-Autovocal-build-diagnostics-${{ github.run_id }}
+          path: |
+            build/**
+            dist/**
+            output/**
+          if-no-files-found: ignore
+          retention-days: 7
