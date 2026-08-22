@@ -27,9 +27,15 @@ Source: "dist\QuiLe-Autovocal\*"; DestDir: "{app}"; Flags: ignoreversion recurse
 #ifexist "drivers\ASIO-Driver-Setup.exe"
 Source: "drivers\ASIO-Driver-Setup.exe"; DestDir: "{tmp}"; Flags: ignoreversion dontcopy
 #endif
+#ifexist "drivers\README.md"
 Source: "drivers\README.md"; DestDir: "{app}\drivers"; Flags: ignoreversion
+#endif
+#ifexist "USER_MANUAL_VI.md"
 Source: "USER_MANUAL_VI.md"; DestDir: "{app}\docs"; Flags: ignoreversion
+#endif
+#ifexist "README.md"
 Source: "README.md"; DestDir: "{app}\docs"; Flags: ignoreversion
+#endif
 
 [Icons]
 Name: "{group}\QuiLe-Autovocal"; Filename: "{app}\{#MyAppExeName}"
