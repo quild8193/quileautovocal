@@ -1,0 +1,76 @@
+Ë
+
+    4ôˆj	  ã                   ó°   — d dl Z d dlZd dlmZ  G d„ de j
+                  «      Zedk(  r e j                  d¬«       d„ Z	d	„ Z
+ G d
+„ de j
+                  «      Zy)é    N)ÚRealtimeAutoTunec                   óH   — e Zd Zd„ Zd„ Zd„ Zd„ Zd„ Zd„ Zd„ Z	d„ Z
+d	„ Zd
+„ Zy)ÚAudioAlgorithmTestsc                 ó‚   — t        dd¬«      | _        t        j                  dt        j                  ¬«      dz  | _        y )Né€»  é   )Úsample_rateÚ
+block_size©Údtype)r   ÚeÚnpÚarangeÚfloat32Út)Úselfs    útests/test_audio.pyÚsetUpzAudioAlgorithmTests.setUp   s+   € Ü!¨eÀÔEˆŒÜ—‘˜4¤r§z¡zÔ2°UÑ:ˆó    c                 ó®   — dt        j                  dt         j                  z  |z  | j                  z  «      z  j	                  t         j
+                  «      S )Ng      Ð?é   )r   ÚsinÚpir   Úastyper   ©r   Úhzs     r   ÚtonezAudioAlgorithmTests.tone   s:   € Ø”r—v‘v˜a¤"§%¡%™i¨"™n¨t¯v©vÑ5Ó6Ñ6×>Ñ>¼r¿z¹zÓJÐJr   c                 ó¢   — | j                   j                  | j                  d«      «      }| j                  t	        |dz
+  «      dk  d|› d«       y )Nç     €{@g       @õ
+   DÃ² Ä‘Æ°á»£c ú Hz©r
+   Ú
+_detect_pitchr   Ú
+assertTrueÚabsr   s     r   Útest_doi_cao_do_a4z&AudioAlgorithmTests.test_doi_cao_do_a4   óC   € Ø
+V‰V×
+!Ñ
+! $§)¡)¨EÓ"2Ó
+3ˆØ‰œ˜B ™J›¨#Ñ-°¸r¸dÀ#Ð/FÕGr   c                 ó¢   — | j                   j                  | j                  d«      «      }| j                  t	        |dz
+  «      dk  d|› d«       y )Ng     €k@g      @r    r!   r"   r   s     r   Útest_doi_cao_do_a4_quoc_tez.AudioAlgorithmTests.test_doi_cao_do_a4_quoc_te   r'   r   c                 óÈ   — d| j                   _        d| j                   _        | j                   j                  d«      }| j	                  t        |dz
+  «      dk  d|› d«       y )Nr   Ú	Chromaticg     @p@ç®GázZp@g      @u   Má»¥c tiÃªu r!   )r
+   ÚkeyÚ
+scale_nameÚ_nearest_scale_hzr$   r%   )r   Útargets     r   Útest_quantize_ve_not_cz*AudioAlgorithmTests.test_quantize_ve_not_c   sQ   € Øˆ‰Œ
+¨K˜Ÿ™Ô)Ø—‘×)Ñ)¨%Ó0ˆØ‰œ˜F V™OÓ,¨sÑ2°lÀ6À(È#Ð4NÕOr   c           
+      ót  — | j                  d«      }d| j                  _        d| j                  _        | j                  j	                  |«      }| j                  t
+        t        j                  t        j                  ||z  «      «      «      d«       | j                  t        j                  ||«      d«       y )Nr   u   BÃ¨ 3gffffffÖ?ç{®Gáz”?u$   Chá»“ng bÃ¨ khÃ´ng táº¡o thay Ä‘á»•i)r   r
+   Úharmony_modeÚ
+harmony_levelÚ_voiceÚ
+assertGreaterÚfloatr   ÚsqrtÚmeanÚassertFalseÚallclose©r   ÚxÚys      r   Útest_chong_be_co_tin_hieuz-AudioAlgorithmTests.test_chong_be_co_tin_hieu   s   € ØI‰IeÓˆ°G˜dŸf™fÔ1ÐTX¸T¿V¹VÔ=QØF‰FM‰M˜!ÓˆØ×Ñœ5¤§¡¬¯©°°Q±«Ó!8Ó9¸4Ô@Ø×ÑœŸ™ Q¨Ó*Ð,RÕSr   c           	      ó´  — t        j                  dt         j                  ¬«      }d|d<   d| j                  _        d| j                  _        d| j                  _        d| j                  _        | j                  j                  |j                  «       «      }| j                  t        t        j                  t        j                  |«      «      «      d«       y )	Nr   r   ç      ð?r   Tg      @gš™™™™™Ù?g        )r   Úzerosr   r
+   Ú
+delay_enabledÚ	delay_mixÚdelay_msÚdelay_feedbackÚ_effectsÚcopyr7   r8   Úmaxr%   )r   r>   Úy1s      r   Útest_delay_co_am_lapz(AudioAlgorithmTests.test_delay_co_am_lap!   sŒ   € ÜH‰HT¤§¡Ô,ˆ°S¨a°©dØ#ˆ‰Ô¸ T§V¡VÔ%5Ès¸T¿V¹V¼_ÐloÐTX×TZÑTZÔTiØ
+V‰V_‰_˜QŸV™V›XÓ
+&ˆØ×Ñœ5¤§¡¬¯©¨r«
+Ó!3Ó4°cÕ:r   c                 óÞ  — dt        j                  dt         j                  z  dz  | j                  z  «      z  dt        j                  dt         j                  z  dz  | j                  z  «      z  z   j	                  t         j
+                  «      }| j                  j                  }d|_        d|_	        |j                  |«       d|_	        | j                  d«      |z   }|j                  |«      }| j                  t        j                  |«      j                  «       «       | j!                  t#        t        j$                  |«      «      t#        t        j$                  |«      «      «       y )	Ng¸…ëQ¸¾?r   i„  g{®Gáz´?i¤  TFr   )r   r   r   r   r   r   r
+   Únoise_suppressorÚenabledÚlearningÚlearnr   Úprocessr$   ÚisfiniteÚallÚ
+assertLessr8   Ústd)r   ÚnoiseÚnsÚsignalÚcleaneds        r   Ú!test_noise_suppression_giam_nhieuz5AudioAlgorithmTests.test_noise_suppression_giam_nhieu'   sý   € ØœŸ™˜q¤2§5¡5™y¨3™°·±Ñ7Ó8Ñ8¸4Ä"Ç&Á&ÈÌRÏUÉUÉÐUYÑIYÐ\`×\bÑ\bÑIbÓBcÑ;cÑc×kÑkÔln×lvÑlvÓwˆØ
+V‰V×
+$Ñ
+$ˆØˆŒ
+¨˜2œ;Ø
+‰Œ u˜œØ—‘˜5Ó! EÑ)ˆØ—*‘*˜VÓ$ˆØ‰œŸ™ GÓ,×0Ñ0Ó2Ô3Ø‰œœbŸf™f W›oÓ.´´b·f±f¸V³nÓ0EÕFr   c           
+      óÆ  — | j                   j                  }d|_        |j                  t	        j
+                  | j                  «      «       |j                  | j                  d«      «      }| j                  t	        j                  |«      j                  «       «       | j                  t        t	        j                  t	        j                  ||z  «      «      «      d«       y )NTr   r3   )r
+   rN   rO   rQ   r   Ú
+zeros_liker   rR   r   r$   rS   rT   r7   r8   r9   r:   )r   rX   rZ   s      r   Ú$test_noise_suppression_tin_hieu_sachz8AudioAlgorithmTests.test_noise_suppression_tin_hieu_sach1   s“   € Ø
+V‰V×
+$Ñ
+$ˆ°4 b¤j¸¿¹Ä"Ç-Á-ÐPT×PVÑPVÓBWÔ9XØ—*‘*˜TŸY™Y uÓ-Ó.ˆØ‰œŸ™ GÓ,×0Ñ0Ó2Ô3Ø×Ñœ5¤§¡¬¯©°¸7Ñ1BÓ)CÓ!DÓEÀtÕLr   c           	      ó‚  — d| j                   _        d| j                   _        | j                   j                  | j	                  d«      «      }| j                  t
+        j                  |«      j                  «       «       | j                  t        t
+        j                  t
+        j                  |«      «      «      d«       y )NTg333333ã?r   rB   )
+r
+   Úreverb_enabledÚ
+reverb_mixrH   r   r$   r   rS   rT   ÚassertLessEqualr8   rJ   r%   )r   r?   s     r   Útest_reverb_khong_nanz)AudioAlgorithmTests.test_reverb_khong_nan7   sz   € Ø $ˆ‰Ô¸# d§f¡fÔ&7À4Ç6Á6Ç?Á?ÐSW×S\ÑS\Ð]bÓScÓCd¸qØ‰œŸ™ A›×*Ñ*Ó,Ô-Ø×ÑœU¤2§6¡6¬"¯&©&°«)Ó#4Ó5°sÕ;r   N)
+Ú__name__Ú
+__module__Ú__qualname__r   r   r&   r)   r1   r@   rL   r[   r^   rc   © r   r   r   r      s;   „ ò;òKòHòHòPò
+Tò;òGòMó<r   r   Ú__main__r   )Ú	verbosityc                 ó.  — | j                  d«      }d| j                  _        d| j                  _        d| j                  _        d| j                  _        | j                  j
+                  |«      }| j                  t        j                  ||«      «       y )Nr   FTu   BÃ¨ 5g333333Ó?)
+r   r
+   Úautotune_enabledÚharmony_enabledr4   r5   r6   r;   r   r<   r=   s      r   Ú&test_chong_be_doc_lap_khi_tat_autotunerm   @   s„   € ØI‰IeÓˆ¸˜dŸf™fÔ5ÐX\¸t¿v¹vÔ?UÐt{Ð^b×^dÑ^dÔ^qð  UWð  ~B÷  ~Dñ  ~Dô  ~RØF‰FM‰M˜!ÓˆØ×ÑœŸ™ Q¨Ó*Õ+r   c                 óJ  — | j                  d«      }d| j                  _        d| j                  _        d| j                  _        d| j                  _        | j                  j
+                  |j                  «       «      }| j                  t        j                  ||«      «       y )Nr   FrB   )r   r
+   rD   r`   rE   ra   rH   rI   r$   r   r<   r=   s      r   Ú%test_effect_toggle_tat_khong_thay_doiro   E   s|   € ØI‰IeÓˆ°U˜dŸf™fÔ2ÐTY¸D¿F¹FÔ<QÐnqÐ[_×[aÑ[aÔ[kð  HKÐsw×syÑsyô  tEØF‰FO‰O˜AŸF™F›HÓ%ˆØ‰œŸ™ A qÓ)Õ*r   c                   ó   — e Zd Zd„ Zy)ÚAutoKeyTestsc                 óø  ‡— ddl m}  |ddd¬«      }t        j                  dt        j                  ¬«      dz  Št        ˆfd„d	D «       «      j
+                  t        j                  «      }t        d«      D cg c]  }|j                  |«      ‘Œ }}| j                  |d
+   d   t        d«      «       | j                  |d
+   d   d
+«       | j                  t        j                  |d
+   d   «      «       y c c}w )Nr   )ÚAutoKeyDetectorr   r   é   )r	   Úfft_sizeÚhistoryr   c              3   ó|   •K  — | ]3  }d t        j                  dt         j                  z  |z  ‰z  «      z  –— Œ5 y­w)gš™™™™™É?r   N)r   r   r   )Ú.0r   r   s     €r   ú	<genexpr>z?AutoKeyTests.test_auto_key_co_ket_qua_hop_le.<locals>.<genexpr>Q   s0   øè ø€ ÒT°R”b—f‘f˜Q¤§¡™Y¨™^¨aÑ/Ó0Õ0ÑTùs   ƒ9<)r,   g®Gázšt@g     €x@éÿÿÿÿé   é   )u	   TrÆ°á»Ÿngu   Thá»©r   )Úkey_detectorrs   r   r   r   Úsumr   ÚrangeÚanalyzeÚassertInr$   rS   )r   rs   Údr>   Ú_Úresultr   s         @r   Útest_auto_key_co_ket_qua_hop_lez,AutoKeyTests.test_auto_key_co_ket_qua_hop_leL   sÂ   ø€ Ý0Ù¨¸ÀaÔHˆÜI‰Id¤"§*¡*Ô-°Ñ5ˆäÓTÐ;SÔTÓT×[Ñ[Ô\^×\fÑ\fÓgˆÜ(-¨a«Ö1 1!—)‘)˜A•,Ð1ˆÐ1Ø
+‰
+f˜R‘j ‘m¤U¨2£YÔ/Ø
+‰
+f˜R‘j ‘mÐ%;Ô<Ø‰œŸ™ F¨2¡J¨q¡MÓ2Õ3ùò 2s   Á9C7N)rd   re   rf   r…   rg   r   r   rq   rq   K   s   „ ó	4r   rq   )ÚunittestÚnumpyr   Úaudio_enginer   ÚTestCaser   rd   Úmainrm   ro   rq   rg   r   r   ú<module>r‹      sU   ðÛ Û Ý )ô4<˜(×+Ñ+ô 4<ðn ˆzÒØ€H‡MM˜AÕò,ò
++ô
+48×$Ñ$õ 
+4r   
