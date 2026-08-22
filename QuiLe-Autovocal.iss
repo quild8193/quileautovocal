@@ -19,9 +19,6 @@ PrivilegesRequired=admin
 ArchitecturesInstallIn64BitMode=x64
 UninstallDisplayIcon={app}\{#MyAppExeName}
 
-[Languages]
-Name: "vietnamese"; MessagesFile: "compiler:Languages\Vietnamese.isl"
-
 [Tasks]
 Name: "desktopicon"; Description: "Tạo biểu tượng ngoài màn hình"; GroupDescription: "Tùy chọn bổ sung:"
 
